@@ -15,7 +15,7 @@ class ScriptsMongoDB:
         password = os.getenv('DB_MONGO_PASSWORD')
         dbname = os.getenv('DB_MONGO_NAME')
 
-        self.client = MongoClient("mongodb+srv://{}:{}@{}.tirlce4.mongodb.net/?retryWrites=true&w=majority".format(
+        self.client = MongoClient("mongodb+srv://{}:{}@{}.qogmy.mongodb.net/test".format(
             user,
             password,
             dbname
@@ -54,7 +54,7 @@ class ScriptsMongoDB:
             collection_name = kwargs['collection_name']
             collection = self.db[collection_name]
 
-            collection.remove()
+            collection.drop()
 
     def create_collection(self, *args, **kwargs):
 
