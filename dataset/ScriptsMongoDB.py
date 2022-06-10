@@ -15,7 +15,7 @@ class ScriptsMongoDB:
         password = os.getenv('DB_MONGO_PASSWORD')
         dbname = os.getenv('DB_MONGO_NAME')
 
-        self.client = MongoClient("mongodb+srv://{}:{}@{}.tirlce4.mongodb.net/?retryWrites=true&w=majority".format(
+        self.client = MongoClient("mongodb+srv://{}:{}@{}.qogmy.mongodb.net/test?retryWrites=true&w=majority".format(
             user,
             password,
             dbname
@@ -25,6 +25,11 @@ class ScriptsMongoDB:
 
     def create_id(self):
         return ObjectId()
+    
+    def get_random(self, *args, **kwargs):
+        if 'collection_name' in kwargs:
+            collection_name = kwargs['collection_name']
+            return list(self.db[collection_name].aggregate([{ '$sample': { 'size': 1 } }]))[0]
         
     def send_json_to_db(self, *args, **kwargs)->None:
 
@@ -54,7 +59,7 @@ class ScriptsMongoDB:
             collection_name = kwargs['collection_name']
             collection = self.db[collection_name]
 
-            collection.remove()
+            collection.drop()
 
     def create_collection(self, *args, **kwargs):
 
@@ -141,4 +146,3 @@ class ScriptsMongoDB:
     def close_connection(self, *args, **kwargs):
 
         self.client.close()
-ScriptsMongoDB()

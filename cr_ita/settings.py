@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -70,6 +74,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cr_ita.wsgi.application'
 
+#  MongoDB
+
+CONNECT_STR_MONGODB = "mongodb+srv://{}:{}@{}.qogmy.mongodb.net/test?retryWrites=true&w=majority".format(
+    os.getenv('DB_MONGO_USER'),
+    os.getenv('DB_MONGO_PASSWORD'),
+    os.getenv('DB_MONGO_NAME'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -78,6 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'CRITA',
+        'ENFORCE_SCHEMA': True,
+        'CLIENT': {
+            'host': CONNECT_STR_MONGODB
+        }
     }
 }
 
