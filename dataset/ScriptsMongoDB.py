@@ -15,7 +15,7 @@ class ScriptsMongoDB:
         password = os.getenv('DB_MONGO_PASSWORD')
         dbname = os.getenv('DB_MONGO_NAME')
 
-        self.client = MongoClient("mongodb+srv://{}:{}@{}.qogmy.mongodb.net/test".format(
+        self.client = MongoClient("mongodb+srv://{}:{}@{}.qogmy.mongodb.net/test?retryWrites=true&w=majority".format(
             user,
             password,
             dbname
