@@ -26,8 +26,10 @@ class ScriptsMongoDB:
     def create_id(self):
         return ObjectId()
     
-    def get_random(self):
-        return list(self.db.eletivas.aggregate([{ '$sample': { 'size': 1 } }]))[0]
+    def get_random(self, *args, **kwargs):
+        if 'collection_name' in kwargs:
+            collection_name = kwargs['collection_name']
+            return list(self.db[collection_name].aggregate([{ '$sample': { 'size': 1 } }]))[0]
         
     def send_json_to_db(self, *args, **kwargs)->None:
 

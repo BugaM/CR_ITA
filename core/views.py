@@ -10,7 +10,7 @@ def helloWorld(request):
 
 def randomData(request):
       scripts = ScriptsMongoDB()
-      doc = scripts.get_random()
+      doc = scripts.get_random(collection_name='disciplinas')
       nome = doc['nome']
       creditos = doc['creditos']
       sigla = doc['sigla']

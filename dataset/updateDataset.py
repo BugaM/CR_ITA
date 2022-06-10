@@ -6,9 +6,9 @@ db = pd.read_excel('dataset/database.xlsx')
 db = db.reset_index()
 scripts_mongo = ScriptsMongoDB()
 scripts_mongo.delete_elements_from_collection(collection_name='eletivas')
-col = scripts_mongo.db['eletivas']
+col = scripts_mongo.db['disciplinas']
 c = db.values.tolist()
-eletivas = []
+disciplinas = []
 for _, row in db.iterrows():
       json = {
             'sigla': row['Sigla'],
@@ -17,5 +17,5 @@ for _, row in db.iterrows():
             'curso' : row['Tipo']
 
       }
-      eletivas.append(InsertOne(json))
-col.bulk_write(eletivas)
+      disciplinas.append(InsertOne(json))
+col.bulk_write(disciplinas)
