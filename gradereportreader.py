@@ -11,6 +11,7 @@ class GradeReportReader:
         self.pdf = PyPDF2.PdfReader(path)
         self.report_lines = self.pdf.pages[0].extract_text().splitlines()
         self.grades = self.read_grades()
+        self.course_credits = self.read_course_credits()
     
     def read_grades(self):
         """
@@ -47,4 +48,25 @@ class GradeReportReader:
         Getter for the grades
         """
         return self.grades
+
+    def read_course_credits(self):
+        """
+        Reads the course credits to update the database.
+        """
+        courses = []
+        credits = []
+        got_to_courses = False
+        for i in range(len(self.report_lines)):
+            if not got_to_courses:
+                got_to_courses = True if self.report_lines[i] == "HORÁRIA" else False
+            elif self.report_lines[i] == "RESUMO DO HISTÓRICO ESCOLAR - ":
+                break
+            elif self.report_lines[i]:
+                course_info = self.report_lines[i].split()
+                try:
+                    credits.append(utils.get_valid_credits(course_info[-1])) 
+                    courses.append(course_info[0])
+                except:
+                    continue
+        return pd.DataFrame({"sigla": courses, "creditos": credits, "nome": "", "curso": ""})
 
