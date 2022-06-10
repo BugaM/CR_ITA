@@ -5,9 +5,6 @@ from dataset.ScriptsMongoDB import ScriptsMongoDB
 
 # Create your views here.
 
-def helloWorld(request):
-      return HttpResponse('Hello World!')
-
 def randomData(request):
       scripts = ScriptsMongoDB()
       doc = scripts.get_random(collection_name='disciplinas')
