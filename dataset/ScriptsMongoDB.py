@@ -25,6 +25,9 @@ class ScriptsMongoDB:
 
     def create_id(self):
         return ObjectId()
+    
+    def get_random(self):
+        return list(self.db.eletivas.aggregate([{ '$sample': { 'size': 1 } }]))[0]
         
     def send_json_to_db(self, *args, **kwargs)->None:
 
@@ -141,4 +144,3 @@ class ScriptsMongoDB:
     def close_connection(self, *args, **kwargs):
 
         self.client.close()
-ScriptsMongoDB()
