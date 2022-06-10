@@ -34,3 +34,7 @@ Para visualizar localmente os dados, pode-se utilizar o [MongoDB Compass](https:
 ```
 mongodb+srv://alienX:alienx208@crita.qogmy.mongodb.net/test
 ```
+
+## Usando o django
+
+O comando `python manage.py runserver` executa o servidor Django.
