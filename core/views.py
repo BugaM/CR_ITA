@@ -6,7 +6,11 @@ from .models import Data
 from dataset.ScriptsMongoDB import ScriptsMongoDB
 
 from gradereportreader import GradeReportReader
-from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
 # Create your views here.
 
 def randomData(request):
@@ -19,7 +23,7 @@ def randomData(request):
       return render(request, 'basic/test.html', {'nome' : nome, 'creditos': creditos,
                                                  'sigla' :sigla , 'curso' : curso})
 
-def get_cr(request):
+def get_cr():
       scripts = ScriptsMongoDB()
       path = "test_pdfs/test_buga.pdf"
       reader = GradeReportReader(path)
@@ -45,9 +49,12 @@ def get_cr(request):
             else:
                   not_identified.append(sigla)
       cr = sum_creditos/total_creditos
-      return render(request, 'cr/test.html', {'cr' : cr, 'media_simples': media_simples,
-                                                 'curso' : prof, 'creditos' : total_eletivas})      
+      return {'cr':cr, 'media_simples': media_simples, "total_eletivas":total_eletivas, "curso": prof}
 
-class DataViewSet(viewsets.ModelViewSet):
-      serializer_class = DataSerializer
-      queryset = Data.objects.all()                  
+class DataItemView(APIView):
+      def post(self, request):
+          serializer = DataSerializer(data=get_cr())
+          if serializer.is_valid():
+                return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+          else:
+                return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

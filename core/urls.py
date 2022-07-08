@@ -1,9 +1,10 @@
 from django.urls import path
 from . import views
 from rest_framework.routers import DefaultRouter
-from core.views import DataViewSet
+from core.views import DataItemView
 
-router = DefaultRouter()
-router.register(r'data', views.DataViewSet, basename='data')
 
-urlpatterns = router.urls
+
+urlpatterns = [
+    path('get_data/', DataItemView.as_view())
+]
