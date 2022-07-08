@@ -130,6 +130,15 @@ class ScriptsMongoDB:
             return dict_objs
 
         return []
+    
+    def get_data_find_one(self, *args, **kwargs):
+
+        if 'collection_name' in kwargs and 'filter' in kwargs:
+
+            collection_name = kwargs['collection_name']
+            filter = kwargs['filter']
+
+            return self.db[collection_name].find_one(filter)
 
 
     def number_elements_collection(self, *args, **kwargs):
