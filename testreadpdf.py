@@ -2,8 +2,10 @@ import gradereportreader
 from dataset.ScriptsMongoDB import ScriptsMongoDB
 
 
-path = "test_pdfs/test_ney.pdf"
-grades = gradereportreader.GradeReportReader(path).get_grades()
+path = "test_pdfs/test_buga.pdf"
+reader = gradereportreader.GradeReportReader(path)
+grades = reader.get_grades()
+prof = reader.get_prof()
 scripts = ScriptsMongoDB()
 total_creditos = 0
 total_eletivas = 0
@@ -24,5 +26,3 @@ for _, grade in grades.iterrows():
       else:
             not_identified.append(sigla)
 cr = sum_creditos/total_creditos
-
-x = 3

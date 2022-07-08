@@ -1,5 +1,6 @@
 import PyPDF2
 import pandas as pd
+import re
 
 import utils
 
@@ -10,6 +11,7 @@ class GradeReportReader:
     def __init__(self, path) -> None:
         self.pdf = PyPDF2.PdfReader(path)
         self.report_lines = self.pdf.pages[0].extract_text().splitlines()
+        self.prof = ''
         self.grades = self.read_grades()
     
     def read_grades(self):
@@ -23,6 +25,9 @@ class GradeReportReader:
         next_is_grades = False
         for i in range(len(self.report_lines)):
             if not passed_summary:
+                if 'Engenharia' in self.report_lines[i]:
+                    string = self.report_lines[i]
+                    self.prof = re.split('(\d+)', string)[0][:-1]
                 if self.report_lines[i] == "RESUMO DO HISTÓRICO ESCOLAR - ":
                     passed_summary = True
             elif not next_is_grades:
@@ -48,3 +53,8 @@ class GradeReportReader:
         """
         return self.grades
 
+    def get_prof(self):
+        """
+        Getter for professional course
+        """
+        return self.prof
