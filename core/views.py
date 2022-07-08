@@ -42,7 +42,7 @@ def get_cr(request):
             else:
                   not_identified.append(sigla)
       cr = sum_creditos/total_creditos
-      return render(request, 'basic/test.html', {'cr' : cr, 'media_simples': media_simples,
-                                                 'curso' : prof, 'total_eletivas' : total_eletivas})      
+      return render(request, 'cr/test.html', {'cr' : cr, 'media_simples': media_simples,
+                                                 'curso' : prof, 'creditos' : total_eletivas})      
 
                         
