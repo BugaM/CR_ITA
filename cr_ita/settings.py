@@ -60,7 +60,9 @@ ROOT_URLCONF = 'cr_ita.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'front/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,7 +135,8 @@ USE_TZ = True
 
 # STATIC_ROOT = os.path.join(CORE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), 
+                     os.path.join(BASE_DIR, 'front/build/static'),]
 
 
 # Default primary key field type
