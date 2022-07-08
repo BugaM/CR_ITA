@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from core.serializer import DataSerializer
+from .models import Data
 
 from dataset.ScriptsMongoDB import ScriptsMongoDB
 
 from gradereportreader import GradeReportReader
+from rest_framework import viewsets
 # Create your views here.
 
 def randomData(request):
@@ -45,4 +48,6 @@ def get_cr(request):
       return render(request, 'cr/test.html', {'cr' : cr, 'media_simples': media_simples,
                                                  'curso' : prof, 'creditos' : total_eletivas})      
 
-                        
+class DataViewSet(viewsets.ModelViewSet):
+      serializer_class = DataSerializer
+      queryset = Data.objects.all()                  
