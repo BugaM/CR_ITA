@@ -1,0 +1,27 @@
+.BasicInfosContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.BasicInfosName{
+    text-align: center;
+    border-radius: 20px;
+    background-color: #183d6c;
+    color: white
+}
+
+.BasicInfosEng{
+    text-align: center;
+    border-radius: 20px;
+    background-color: #183d6c;
+    color: white
+}
+
+.BasicInfosPDF{
+    text-align: center;
+    border-radius: 20px;
+    background-color: #183d6c;
+    color: white
+}
