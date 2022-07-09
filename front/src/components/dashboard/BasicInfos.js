@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import axios from 'axios'
 import styles from "./BasicInfos.module.css"
+import get from 'axios'
 
 function BasicInfos(props){
 
@@ -24,18 +24,19 @@ function BasicInfos(props){
 				body: formData,
 			}
 		)
-			.then((response) => response.json())
+			.then(response => console.log(response.json()))
+            
 	};
 
-
+    
     return (
         <div className={styles.BasicInfosContainer}>
             <div className={styles.BasicInfosName}>
-                Nome: {response.total_eletivas} 
+                Nome: JSAON
             </div>
 
             <div className={styles.BasicInfosEng}>
-                Curso: {response.curso}
+                Curso: Sim
             </div>
             
             <div className={styles.BasicInfosPDF}>

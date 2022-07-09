@@ -14,9 +14,9 @@ function Header(){
                 <img style = {{filter : "invert(70%)"}} src = {require("../../images/dashboard-logo.png")} width = "100" alt = "dashlogo"></img>
                 <div> Dashboard </div> 
             </Link>
-            <Link to = "/login" className={styles.HeaderLoginpage}> 
+            <Link to = "/contact" className={styles.HeaderLoginpage}> 
                 <img style = {{filter : "invert(70%)"}} src = {require("../../images/user-logo.png")} width = "100" alt = "loginlogo"></img>
-                <div> Login/Registro </div>
+                <div> Contato </div>
             </Link>
             <div>
                 <img style = {{cursor : "pointer", alignItems : "center"}} src = {require("../../images/ita-logo.png")} alt = "italogo" onClick = {event => window.location.href = 'http://www.ita.br/'} ></img>
