@@ -31,7 +31,7 @@ function BasicInfos(props){
     return (
         <div className={styles.BasicInfosContainer}>
             <div className={styles.BasicInfosName}>
-                Nome: Marcelo
+                Nome: {props.nome}
             </div>
 
             <div className={styles.BasicInfosEng} key={props.curso}>

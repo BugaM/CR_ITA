@@ -11,6 +11,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+
+
 # Create your views here.
 
 def randomData(request):
@@ -32,6 +34,7 @@ def get_cr():
       total_creditos = 0
       total_eletivas = 0
       prof = reader.get_prof()
+      name = reader.name
 
 
       sum_creditos = 0
@@ -49,12 +52,12 @@ def get_cr():
             else:
                   not_identified.append(sigla)
       cr = sum_creditos/total_creditos
-      return {'cr':cr, 'media_simples': media_simples, "total_eletivas":total_eletivas, "curso": prof}
+      return {'cr':cr, 'media_simples': media_simples, "total_eletivas":total_eletivas, "curso": prof, "nome": name}
 
 class DataItemView(APIView):
-      def post(self, request):
+      def get(self, request):
           serializer = DataSerializer(data=get_cr())
           if serializer.is_valid():
-                return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+                return Response(serializer.data, status=status.HTTP_200_OK)
           else:
                 return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
