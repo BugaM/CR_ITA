@@ -1,5 +1,5 @@
-release: python manage.py makeigrations
---no-input
+release: python manage.py makemigrations --no-input
 release: python manage.py migrate --no-input
-heroku ps scale web=1
-web gunicorn cmbackend.wsgi
+heroku: ps scale web=1
+web: npm start
+web: gunicorn cmbackend.wsgi
