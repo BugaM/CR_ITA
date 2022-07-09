@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import styles from "./BasicInfos.module.css"
-import get from 'axios'
 
 function BasicInfos(props){
 
