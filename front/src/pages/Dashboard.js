@@ -10,6 +10,7 @@ function Dashboard() {
     const [media_simples, setMedia] = useState(0);
     const [conceito, setConceito] = useState('-');
     const [nome, setNome] = useState('-');
+    const [creditos_total, setCreditosTotal] = useState('0');
 
     async function handleSubmission() {
       
@@ -20,7 +21,10 @@ function Dashboard() {
       setEletivas(parseFloat(response.total_eletivas).toFixed(1))
       setMedia(parseFloat(response.media_simples).toFixed(2))
       setCr(parseFloat(response.cr).toFixed(2))
-      setNome(response.name)
+      setNome(response.nome)
+      console.log(response)
+      console.log(response.nome)
+      setCreditosTotal(16)
       let grade_fixed = parseFloat(response.cr).toFixed(1);
       if (grade_fixed >= 9.5){
         setConceito('L');
@@ -38,7 +42,7 @@ function Dashboard() {
     return (
       <div>
         <BasicInfos curso = {curso} nome={nome} handleSub = {handleSubmission}/> 
-        <Elective horasatuais = {total_eletivas} horasnecessarias = "16" />
+        <Elective creditos_atuais = {total_eletivas} creditos_totais = {creditos_total} />
         <Grades nota = {media_simples} conceito = {conceito} cr = {cr}/>
       </div> 
     );

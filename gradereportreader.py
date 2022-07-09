@@ -22,10 +22,15 @@ class GradeReportReader:
         courses = []
         grades = []
         passed_summary = False
+        passed_name = False
         next_is_grades = False
         for i in range(len(self.report_lines)):
             if not passed_summary:
-                if 'Engenharia' in self.report_lines[i]:
+                if not passed_name and '-' in self.report_lines[i]:
+                    string = self.report_lines[i]
+                    self.name = string.split(',')[0].split('-')[1][1:]
+                    passed_name = True
+                elif 'Engenharia' in self.report_lines[i]:
                     string = self.report_lines[i]
                     self.prof = re.split('(\d+)', string)[0][:-1]
                 if self.report_lines[i] == "RESUMO DO HISTÓRICO ESCOLAR - ":

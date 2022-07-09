@@ -16,18 +16,7 @@ function BasicInfos(props){
 	};
 
 
-    // const handleSubmission = () => {
-    //     fetch('http://127.0.0.1:8000/core_api/get_data/')
-    //     .then(response => response.json())
-    //     .then(results => {console.log('Success:', results);});
-	// };
-    // var response = {total_eletivas:2, curso: "-", }
-    // async function handleSubmission() {
-    //     response =  await (await fetch('http://127.0.0.1:8000/core_api/get_data/')).json()
-    //     console.log(response.curso)
-    //     setEletivas (response.total_eletivas)
-	// };
-
+    
     return (
         <div className={styles.BasicInfosContainer}>
             <div className={styles.BasicInfosName}>
