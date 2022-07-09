@@ -1,6 +1,6 @@
 import styles from "./HowToUse.module.css"
 
-function HowToUse(props){
+function HowToUse(){
     return (
         <div className={styles.HowToUseContainer}>
 
@@ -10,8 +10,8 @@ function HowToUse(props){
                 <div className={styles.HowToUseTitle}> Como usar </div>
                 <div className={styles.HowToUseText}> 
                     Para utilizar a CalculadorITA basta ir na página de Dashboard e upar seu boletim escolar do ITA, o cálculo do CR e de 
-                    outras métricas do aluno são feito automaticamente a partir de um banco de dados que o website possui. Caso queira manter
-                    o boletim no site, você pode utilizar a página Login/Registro para se cadastrar e para recuperar seus dados da última ssssão.
+                    outras métricas do aluno são feito automaticamente a partir de um banco de dados que o website possui. Caso queira mandar uma 
+                    mensagem para os desenvolvedores relatando bugs da plataforma ou mandando críticas, basta utilizar a página de Contato.
 
                 </div> 
             </div>

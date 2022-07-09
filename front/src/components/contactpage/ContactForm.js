@@ -15,7 +15,7 @@ function ContactForm(){
                 <div style={{fontSize : "xx-large"}}> Remetente: </div>
                 <input type="text" style = {{width : "300px", textAlign : "left"}}></input>
                 <div style={{fontSize : "xx-large"}}> Mensagem: </div>
-                <input type="text" style = {{height : "200px", width : "300px", textAlign : "left"}}></input>
+                <textarea type="text" style = {{height : "200px", width : "300px", textAlign : "left"}}></textarea>
                 <div> <input type="submit"></input> </div>
               </form>
             </div>
