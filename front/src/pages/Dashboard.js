@@ -24,7 +24,7 @@ function Dashboard() {
       setNome(response.nome)
       console.log(response)
       console.log(response.nome)
-      setCreditosTotal(16)
+      setCreditosTotal(24)
       let grade_fixed = parseFloat(response.cr).toFixed(1);
       if (grade_fixed >= 9.5){
         setConceito('L');

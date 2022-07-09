@@ -27,7 +27,7 @@ def randomData(request):
 
 def get_cr():
       scripts = ScriptsMongoDB()
-      path = "test_pdfs/test_buga.pdf"
+      path = "test_pdfs/08.pdf"
       reader = GradeReportReader(path)
       grades = reader.get_grades()
       scripts = ScriptsMongoDB()
