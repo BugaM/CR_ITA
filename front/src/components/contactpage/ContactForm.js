@@ -2,8 +2,7 @@ import styles from "./ContactForm.module.css"
 
 function ContactForm(){
   
-  function SendEmail (e){
-    e.preventDefault()
+  function SendEmail (){
     alert("Email enviado! Agradecemos o contato")
   }
 
