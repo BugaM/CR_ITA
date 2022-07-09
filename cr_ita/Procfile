@@ -1,4 +1,5 @@
 release: python manage.py makeigrations
 --no-input
 release: python manage.py migrate --no-input
-web: gunicorn app:app
+web: gunicorn cmbackend.wsgi
+heroku ps:scale web=1
