@@ -30,7 +30,6 @@ function Dashboard() {
         method:'POST',
         body: formData
       })).json()
-      console.log(response)
     
       // setEletivas (response.total_eletivas)
       setCurso (response.curso)
@@ -38,9 +37,8 @@ function Dashboard() {
       setMedia(parseFloat(response.media_simples).toFixed(2))
       setCr(parseFloat(response.cr).toFixed(2))
       setNome(response.nome)
-      console.log(response)
-      console.log(response.nome)
-      setCreditosTotal(24)
+
+
       let grade_fixed = parseFloat(response.cr).toFixed(1);
       if (grade_fixed >= 9.5){
         setConceito('L');
@@ -53,6 +51,23 @@ function Dashboard() {
       } else if (grade_fixed >= 5.5){
         setConceito('I');
       } else setConceito('D');
+      
+
+      if (response.curso.includes('Mecânica')){
+        setCreditosTotal('18');
+      } else if (response.curso.includes('Aeronáutica')){
+        setCreditosTotal('A - 22  B - 16');
+      } else if (response.curso.includes('Eletrônica')){
+        setCreditosTotal('18');
+      } else if (response.curso.includes('Eletrônica')){
+        setCreditosTotal('18');
+      } else if (response.curso.includes('Civil')){
+        setCreditosTotal('A - 8  B - 22');
+      } else if (response.curso.includes('Computação')){
+        setCreditosTotal('24');
+      } else if (response.curso.includes('Aeroespacial')){
+        setCreditosTotal('A - 17  B - 8')
+      }
     };
 
 
