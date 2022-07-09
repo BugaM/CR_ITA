@@ -2,7 +2,7 @@ import gradereportreader
 from dataset.ScriptsMongoDB import ScriptsMongoDB
 
 
-path = "test_pdfs/test_buga.pdf"
+path = "test_pdfs/08.pdf"
 reader = gradereportreader.GradeReportReader(path)
 grades = reader.get_grades()
 prof = reader.get_prof()

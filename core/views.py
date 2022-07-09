@@ -32,10 +32,10 @@ def randomData(request):
       return render(request, 'basic/test.html', {'nome' : nome, 'creditos': creditos,
                                                  'sigla' :sigla , 'curso' : curso})
 
-def get_cr():
+def get_cr(file):
       scripts = ScriptsMongoDB()
-      path = "test_pdfs/08.pdf"
-      reader = GradeReportReader(path)
+      # path = "test_pdfs/08.pdf"
+      reader = GradeReportReader(file)
       grades = reader.get_grades()
       scripts = ScriptsMongoDB()
       total_creditos = 0
@@ -69,8 +69,8 @@ class DataItemView(APIView):
 
       def post(self, request):
           my_file = File(request.data.get('file'))
-          print(my_file)
-          serializer = DataSerializer(data=get_cr())
+          
+          serializer = DataSerializer(data=get_cr(my_file))
           if serializer.is_valid():
                 return Response(serializer.data, status=status.HTTP_200_OK)
           else:

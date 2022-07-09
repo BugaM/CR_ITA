@@ -8,8 +8,8 @@ class GradeReportReader:
     """
     Reads ITA's grade report in pdf format.
     """
-    def __init__(self, path) -> None:
-        self.pdf = PyPDF2.PdfReader(path)
+    def __init__(self, file) -> None:
+        self.pdf = PyPDF2.PdfReader(file)
         self.report_lines = self.pdf.pages[0].extract_text().splitlines()
         self.prof = ''
         self.grades = self.read_grades()
