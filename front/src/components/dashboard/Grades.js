@@ -5,7 +5,7 @@ function Grades(props){
         <div className={styles.GradesContainer}>
 
             <div className={styles.GradesITAGrade}>
-                Notas ITA: {props.nota} 
+                Média simples: {props.nota} 
             </div>
 
             <div className={styles.GradesITAConcept}>
