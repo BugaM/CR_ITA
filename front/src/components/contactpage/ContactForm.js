@@ -17,14 +17,12 @@ function ContactForm(){
     setWrittenText(event.target.value)
   };
   
-  async function SendEmail (){
-    console.log(writtenName)
-    console.log(writtenText)
+  async function sendMessage (){
     let contact = {
       name: writtenName,
       text: writtenText
     }
-    alert("Email enviado! Agradecemos o contato")
+    alert("Mensagem enviada! Agradecemos o contato")
     fetch('http://127.0.0.1:8000/core_api/contact/', {
       method:'POST',
       headers:{
@@ -38,7 +36,7 @@ function ContactForm(){
         <div className={styles.ContactContainer}>
           <div />
             <div style={{borderRadius: "20px", backgroundColor: "#183d6c" , padding : "20px"}}>
-              <form onSubmit={SendEmail}>
+              <form onSubmit={sendMessage}>
                 <div style={{fontSize : "xx-large"}}> Remetente: </div>
                 <input type="text" onChange={updateName} style = {{width : "300px", textAlign : "left"}}></input>
                 <div style={{fontSize : "xx-large"}}> Mensagem: </div>
