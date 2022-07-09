@@ -9,8 +9,15 @@ from gradereportreader import GradeReportReader
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import permissions, parsers
+from django.core.files import File
 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return  # To not perform the csrf check previously happening
 
 
 # Create your views here.
@@ -55,7 +62,14 @@ def get_cr():
       return {'cr':cr, 'media_simples': media_simples, "total_eletivas":total_eletivas, "curso": prof, "nome": name}
 
 class DataItemView(APIView):
-      def get(self, request):
+      permission_classes = (permissions.AllowAny,)
+      parser_classes = (parsers.FormParser,parsers.MultiPartParser, parsers.FileUploadParser, )
+      authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+      def post(self, request):
+          my_file = File(request.data.get('file'))
+          print(my_file)
           serializer = DataSerializer(data=get_cr())
           if serializer.is_valid():
                 return Response(serializer.data, status=status.HTTP_200_OK)

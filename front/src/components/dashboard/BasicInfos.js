@@ -5,15 +5,7 @@ import get from 'axios'
 function BasicInfos(props){
 
 
-	const [selectedFile, setSelectedFile] = useState();
-	const [isFilePicked, setIsFilePicked] = useState(false);
-
-
-    
-	const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-		setIsFilePicked(true);
-	};
+	
 
 
     
@@ -30,7 +22,7 @@ function BasicInfos(props){
             <div className={styles.BasicInfosPDF}>
                 <div> Boletim: </div>
                 <div style = {{alignSelf: "center", height:"100%"}}>
-                    <input type="file" name="pdf" onChange={changeHandler} style ={{color : "green", width : "290px"}}/>
+                    <input type="file" name="pdf" onChange={props.changeHandler} style ={{color : "green", width : "290px"}}/>
                 </div>  
                 <div onClick={props.handleSub} style = {{cursor : "pointer", color : "green"}}> Enviar </div>
             </div>  

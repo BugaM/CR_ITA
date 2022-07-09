@@ -12,9 +12,25 @@ function Dashboard() {
     const [nome, setNome] = useState('-');
     const [creditos_total, setCreditosTotal] = useState('0');
 
-    async function handleSubmission() {
+    const [selectedFile, setSelectedFile] = useState();
+    const [isFilePicked, setIsFilePicked] = useState(false);
+
+
       
-      let response =  await (await fetch('http://127.0.0.1:8000/core_api/get_data/')).json()
+    const changeHandler = (event) => {
+      setSelectedFile(event.target.files[0]);
+      setIsFilePicked(true);
+    };
+
+    async function handleSubmission() {
+
+      const formData = new FormData();
+      formData.append('file', selectedFile)
+      let response =  await (await fetch('http://127.0.0.1:8000/core_api/get_data/', {
+        method:'POST',
+        body: formData
+      })).json()
+      console.log(response)
     
       // setEletivas (response.total_eletivas)
       setCurso (response.curso)
@@ -39,9 +55,10 @@ function Dashboard() {
       } else setConceito('D');
     };
 
+
     return (
       <div>
-        <BasicInfos curso = {curso} nome={nome} handleSub = {handleSubmission}/> 
+        <BasicInfos curso = {curso} nome={nome} handleSub = {handleSubmission} changeHandler = {changeHandler}/> 
         <Elective creditos_atuais = {total_eletivas} creditos_totais = {creditos_total} />
         <Grades nota = {media_simples} conceito = {conceito} cr = {cr}/>
       </div> 
