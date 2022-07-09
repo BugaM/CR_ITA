@@ -5,11 +5,11 @@ function Elective(props){
         <div className={styles.ElectiveContainer}>
 
             <div className={styles.ElectiveCurrentHours}>
-                Horas atuais em eletivas: {props.horasatuais} 
+                Créditos atuais em eletivas: {props.horasatuais} 
             </div>
 
             <div className={styles.ElectiveNeededHours}>
-                Horas necessárias em eletivas: {props.horasnecessarias}
+                Créditos necessárias em eletivas: {props.horasnecessarias}
             </div>
 
         </div>
