@@ -2,7 +2,7 @@
 
 ## Link do website
 
-https://crita.herokuapp.com/dashboard
+https://crita.herokuapp.com
 
 ## Configurando ambiente python
 
