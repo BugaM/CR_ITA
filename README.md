@@ -1,5 +1,9 @@
 # CR_ITA
 
+## Link do website
+
+https://crita.herokuapp.com/dashboard
+
 ## Configurando ambiente python
 
 Antes de usar o ambiente, crie um ambiente virtual. Recomendo o [virtualenv](https://pypi.org/project/virtualenv/).
@@ -35,6 +39,15 @@ Para visualizar localmente os dados, pode-se utilizar o [MongoDB Compass](https:
 mongodb+srv://alienX:alienx208@crita.qogmy.mongodb.net/test
 ```
 
+## Instalando os pacotes 
+
+O comando `npm install` na pasta front baixa os pacotes necessários para o front-end.
+
+## Realizando a build
+
+O comando `npm run build` na raiz realiza a build do front-end.
+
 ## Usando o django
 
 O comando `python manage.py runserver` executa o servidor Django.
+
